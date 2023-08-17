@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+<title> talk </title>
+<style> 
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height:90vh;
+}
+button {
+    font-size: 24pt;
+}
+</style>
+<script>
+    function sayWord(e) {
+        let utterance = new SpeechSynthesisUtterance(e.target.innerText);
+        speechSynthesis.speak(utterance);
+    }
+</script>
+</head>
+<body>
+<div class="buttons">
+<button onclick="sayWord(event)"> sippy </button>
+<button onclick="sayWord(event)"> hungry </button>
+<button onclick="sayWord(event)"> potty </button>
+<button onclick="sayWord(event)"> happy </button>
+<button onclick="sayWord(event)"> upset </button>
+<button onclick="sayWord(event)"> play </button>
+<button onclick="sayWord(event)"> outside </button>
+<button onclick="sayWord(event)"> sleepy</button>
+</div>
+</body>
+</html>
