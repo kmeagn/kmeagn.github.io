@@ -2,8 +2,8 @@
 <html>
     <head>
 <title> talk </title>
-<style> 
-.buttons {
+<style>
+#buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height:90vh;
@@ -13,22 +13,39 @@ button {
 }
 </style>
 <script>
-    function sayWord(e) {
-        let utterance = new SpeechSynthesisUtterance(e.target.innerText);
-        speechSynthesis.speak(utterance);
+function sayWord(message) {
+    let utterance = new SpeechSynthesisUtterance(message);
+    speechSynthesis.speak(utterance);
+}
+
+const buttonDefinitions = [
+    { label: "🥤 Sippy", message: "sippy", },
+    { label: "Hungry", message: "hungry", },
+    { label: "🚽 Potty", message: "potty", },
+    { label: "Happy", message: "happy", },
+    { label: "😡 Upset", message: "upset", },
+    { label: "Play", message: "play", },
+    { label: "Outside", message: "outside", },
+    { label: "🛏️ Sleepy", message: "sleepy", },
+    { label: "🦄 Ponies", message: "ponies", },
+    { label: "Bluey", message: "bluey", },
+]
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("buttons");
+    for (const buttonDefinition of buttonDefinitions) {
+        const button = document.createElement("button");
+        button.addEventListener("click", () => {
+            sayWord(buttonDefinition.message);
+        });
+        button.appendChild(document.createTextNode(buttonDefinition.label));
+        container.appendChild(button);
     }
+});
 </script>
 </head>
 <body>
-<div class="buttons">
-<button onclick="sayWord(event)"> sippy </button>
-<button onclick="sayWord(event)"> hungry </button>
-<button onclick="sayWord(event)"> potty </button>
-<button onclick="sayWord(event)"> happy </button>
-<button onclick="sayWord(event)"> upset </button>
-<button onclick="sayWord(event)"> play </button>
-<button onclick="sayWord(event)"> outside </button>
-<button onclick="sayWord(event)"> sleepy</button>
+<div id="buttons">
 </div>
 </body>
 </html>
